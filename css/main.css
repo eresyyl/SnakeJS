@@ -1,0 +1,32 @@
+table{
+	border-spacing: 1px;
+}
+td{
+	width: 20px;
+	height: 20px;
+	border: 1px solid;
+}
+td.crash{
+	background: red;
+}
+td.border{
+	background: black;
+}
+td.snake{
+	background: blue;
+}
+td.food{
+	background: green;
+}
+#gameField{
+	float: left;
+}
+#gameOptions{
+	float: right;
+}
+#gameScreenProtector{
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+}

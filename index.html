@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="SnakeApp" ng-controller="SnakeController">
+  <head>
+    <link href="css/main.css" rel="stylesheet" />
+    
+    <!-- Include the core AngularJS library -->
+    <script src="js/shared/angular.min.js"></script>
+
+    <!-- Include the AngularJS other libraries -->
+	<script src="js/shared/ngStorage.js"></script>
+  </head>
+  <body ng-keydown="key($event)">
+	<div id="gameScreenProtector" ng-if="isPlaying">
+	</div>
+    <h2>Snake</h2>
+	<div id="gameField">
+		<table>
+			<tr ng-repeat="row in field track by $index">
+				<td ng-repeat="col in row track by $index" class="{{col}}"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="gameOptions">
+		<h3>Choose your destiny!</h3>
+		<select ng-model="levelNumber" ng-change="renderLevel()">
+			<option ng-repeat="level in levels track by $index" value="{{$index}}">{{$index}}</option>
+		</select>
+		<div class="button" ng-click="levelStart()" ng-if="!isPlaying">START</div>
+	</div>
+	<div id="gameScores">
+		<h3>BEST SCORE</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>User name</th>
+					<th>Level</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>{{$storage.bestResult.username}}</td>
+				<td>{{$storage.bestResult.levelNumber}}</td>
+				<td>{{$storage.bestResult.score}}</td>
+			</tr>
+		</table>
+	</div>
+	
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/SnakeController.js"></script>
+
+    <!-- Services -->
+    <script src="js/services/levels.js"></script>
+
+	<!-- Directives -->
+	
+  </body>
+</html>
